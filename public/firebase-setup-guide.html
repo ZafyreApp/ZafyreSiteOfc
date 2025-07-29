@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Configuração do Firebase - Zafyre</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .step { margin: 20px 0; padding: 15px; border-left: 4px solid #ffd700; background: #f9f9f9; }
+        code { background: #eee; padding: 2px 4px; border-radius: 3px; }
+        .warning { background: #fff3cd; border-color: #ffc107; color: #856404; }
+    </style>
+</head>
+<body>
+    <h1>🔥 Guia de Configuração do Firebase</h1>
+    
+    <div class="step warning">
+        <h3>⚠️ IMPORTANTE</h3>
+        <p>Seu login não funciona porque o Firebase não foi configurado. Siga os passos abaixo:</p>
+    </div>
+
+    <div class="step">
+        <h3>Passo 1: Acesse o Console do Firebase</h3>
+        <p>1. Vá para <a href="https://console.firebase.google.com/" target="_blank">https://console.firebase.google.com/</a></p>
+        <p>2. Faça login com sua conta Google</p>
+        <p>3. Crie um novo projeto ou selecione um existente</p>
+    </div>
+
+    <div class="step">
+        <h3>Passo 2: Configure a Autenticação</h3>
+        <p>1. No menu lateral, clique em "Authentication"</p>
+        <p>2. Vá na aba "Sign-in method"</p>
+        <p>3. Ative "Email/Password" e "Google"</p>
+    </div>
+
+    <div class="step">
+        <h3>Passo 3: Registre seu App Web</h3>
+        <p>1. Vá em "Configurações do projeto" (ícone de engrenagem)</p>
+        <p>2. Na aba "Geral", role até "Seus apps"</p>
+        <p>3. Clique no ícone da web (&lt;/&gt;) para adicionar um app web</p>
+        <p>4. Dê um nome para seu app (ex: "Zafyre Web")</p>
+        <p>5. Copie as configurações que aparecem</p>
+    </div>
+
+    <div class="step">
+        <h3>Passo 4: Configure o Arquivo</h3>
+        <p>1. Abra o arquivo <code>public/js/firebase-init.js</code></p>
+        <p>2. Substitua as configurações de exemplo pelas suas configurações reais</p>
+        <p>3. Exemplo:</p>
+        <pre><code>const firebaseConfig = {
+    apiKey: "AIzaSyB1234567890abcdef...",
+    authDomain: "meu-projeto.firebaseapp.com",
+    projectId: "meu-projeto-id",
+    storageBucket: "meu-projeto.appspot.com",
+    messagingSenderId: "123456789012",
+    appId: "1:123456789012:web:abc123def456..."
+};</code></pre>
+    </div>
+
+    <div class="step">
+        <h3>Passo 5: Teste o Login</h3>
+        <p>1. Salve o arquivo <code>firebase-init.js</code></p>
+        <p>2. Recarregue a página de login</p>
+        <p>3. Teste o login com email/senha ou Google</p>
+    </div>
+
+    <p><a href="/login.html">← Voltar para o Login</a></p>
+</body>
+</html>
