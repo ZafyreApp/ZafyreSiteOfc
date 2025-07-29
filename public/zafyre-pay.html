@@ -1,44 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zafyre Pay - Pagamentos</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
+    <title>Zafyre - Pay</title>
+    <link rel="stylesheet" href="css/style.css">        <link rel="stylesheet" href="css/zafyre-pay.css">   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
     <header class="header">
-        <a href="my-profile.html" class="back-button">&larr; Voltar</a>
-        <h1>Zafyre Pay</h1>
-        </header>
+        <div class="logo">
+            <img src="assets/logo-zafyre.png" alt="Zafyre Logo">
+        </div>
+    </header>
 
-    <main class="main-content">
-        <section class="payment-section">
-            <h2>Iniciar um Pagamento</h2>
-            <p>Clique no botão abaixo para iniciar o fluxo de pagamento via Mercado Pago.</p>
-            <button id="checkout-button" class="action-button primary-button">Pagar com Mercado Pago</button>
-            <p class="payment-info">Você será redirecionado para a página segura do Mercado Pago.</p>
-        </section>
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="feed.html"><i class="fas fa-home"></i> Feed</a></li>
+                <li><a href="criadora.html"><i class="fas fa-user"></i> Perfil</a></li>
+                <li><a href="chat.html"><i class="fas fa-envelope"></i> Chat</a></li>
+                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+                <li><a href="zafyre-pay.html"><i class="fas fa-money-bill-wave"></i> Zafyre Pay</a></li>
+                <li><a href="zafyre-shop.html"><i class="fas fa-shopping-bag"></i> Zafyre Shop</a></li>
+                <li><a href="zafyre-creators.html"><i class="fas fa-star"></i> Zafyre Creators</a></li>
+                <li><a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-        <section class="transaction-history-section">
-            <h2>Histórico de Pagamentos</h2>
-            <div id="transactions-list" class="transactions-list">
-                <p class="loading-message">Carregando histórico de transações...</p>
-                </div>
-            <p id="no-transactions-message" class="hidden">Nenhuma transação encontrada.</p>
-        </section>
+    <main class="main-wrapper content">
+        <h2>Zafyre Pay</h2>
+        <p>Gerencie seus ganhos e suas despesas no Zafyre!</p>
+        <section id="balance-info">
+            <h3>Seu Saldo</h3>
+            </section>
+        <section id="transaction-history">
+            <h3>Histórico de Transações</h3>
+            </section>
     </main>
 
-    <footer class="navbar">
-        <a href="feed.html" class="nav-item"><img src="icons/home.svg" alt="Feed"><span>Feed</span></a>
-        <a href="explore.html" class="nav-item"><img src="icons/search.svg" alt="Explorar"><span>Explorar</span></a>
-        <a href="create-post.html" class="nav-item"><img src="icons/add.svg" alt="Criar"><span>Criar</span></a>
-        <a href="notifications.html" class="nav-item"><img src="icons/bell.svg" alt="Notificações"><span>Notificações</span></a>
-        <a href="my-profile.html" class="nav-item"><img src="icons/user.svg" alt="Perfil"><span>Perfil</span></a>
-    </footer>
+    <div id="post-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-body">
+                <img src="" alt="Postagem" id="modal-media" style="display: block;">
+                <video src="" controls autoplay id="modal-video" style="display: none;"></video>
+                <p id="modal-text"></p>
+                <div class="modal-actions">
+                    <span>❤️ <span id="modal-likes"></span></span>
+                    <span>💬 <span id="modal-comments"></span></span>
+                    <button class="btn btn-buy-ppv" id="modal-buy-ppv-button" style="display: none;"><i class="fas fa-shopping-cart"></i> Comprar Conteúdo</button>
+                    <button class="btn btn-follow-creator" id="modal-follow-button" style="display: none;"><i class="fas fa-user-plus"></i> Seguir</button>
+                    <button class="btn btn-delete-post" id="modal-delete-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Postagem</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script type="module" src="js/firebase-init.js"></script>
-    <script type="module" src="js/auth.js"></script>
-    <script type="module" src="js/zafyre-pay.js"></script>
-</body>
+    <nav class="mobile-nav">
+        <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
+        <a href="criadora.html"><i class="fas fa-user"></i> Perfil</a>
+        <a href="chat.html"><i class="fas fa-envelope"></i> Chat</a>
+        <a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a>
+        <a href="zafyre-pay.html"><i class="fas fa-money-bill-wave"></i> Pay</a>
+        <a href="zafyre-shop.html"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="zafyre-creators.html"><i class="fas fa-star"></i> Creators</a>
+        <a href="#" id="logout-button-mobile"><i class="fas fa-sign-out-alt"></i> Sair</a>
+    </nav>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/firebase-auth.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/zafyre-pay.js"></script> </body>
 </html>
