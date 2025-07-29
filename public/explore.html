@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar - Zafyre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Explorar</h1>
+        <div class="header-icons">
+            </div>
+    </header>
+
+    <main class="main-content explore-container">
+        <section class="explore-grid-section">
+            <h3>Descobrir Novas Publicações</h3>
+            <div id="explore-posts-grid" class="posts-grid">
+                <p id="no-explore-posts-message" class="info-message hidden">Nenhuma publicação encontrada. Comece a criar!</p>
+                <div class="loading-spinner"></div> </div>
+        </section>
+    </main>
+
+    <footer class="navbar">
+        <a href="feed.html" class="nav-item"><img src="icons/home.svg" alt="Feed"><span>Feed</span></a>
+        <a href="explore.html" class="nav-item active"><img src="icons/search.svg" alt="Explorar"><span>Explorar</span></a>
+        <a href="create-post.html" class="nav-item"><img src="icons/add.svg" alt="Criar"><span>Criar</span></a>
+        <a href="notifications.html" class="nav-item"><img src="icons/bell.svg" alt="Notificações"><span>Notificações</span></a>
+        <a href="my-profile.html" class="nav-item"><img src="icons/user.svg" alt="Perfil"><span>Perfil</span></a>
+    </footer>
+
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/explore.js"></script>
+</body>
+</html>
