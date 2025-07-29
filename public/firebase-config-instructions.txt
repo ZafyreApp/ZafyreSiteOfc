@@ -1,0 +1,21 @@
+
+INSTRUÇÕES PARA CONFIGURAR O FIREBASE:
+
+1. Acesse o Console do Firebase (https://console.firebase.google.com/)
+2. Selecione seu projeto
+3. Vá em "Configurações do projeto" (ícone de engrenagem)
+4. Na aba "Geral", role até "Seus apps"
+5. Clique em "Configuração" do seu app web
+6. Copie as configurações e substitua no arquivo public/js/firebase-init.js
+
+As configurações que você precisa são:
+- apiKey
+- authDomain  
+- projectId
+- storageBucket
+- messagingSenderId
+- appId
+
+IMPORTANTE: Essas são as configurações do CLIENTE (diferentes do Service Account JSON usado no backend).
+
+Após configurar, teste o login/cadastro no seu app.
