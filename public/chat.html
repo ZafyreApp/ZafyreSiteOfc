@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Zafyre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="feed.html" class="back-button">&larr; Voltar</a>
+        <h1>Chat</h1>
+        <button id="new-chat-button" class="header-button hidden">+</button> </header>
+
+    <main class="main-content chat-layout">
+        <aside id="conversations-sidebar" class="conversations-sidebar">
+            <h2 class="sidebar-title">Conversas</h2>
+            <div id="conversation-list" class="conversation-list">
+                <p class="loading-message">Carregando conversas...</p>
+                <p id="no-conversations-message" class="hidden">Nenhuma conversa encontrada. Inicie uma nova!</p>
+                </div>
+        </aside>
+
+        <section id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <button id="close-chat-button" class="back-button chat-back-button">&larr;</button>
+                <img id="chat-contact-avatar" src="default-avatar.png.jpg" alt="Avatar do Contato" class="chat-contact-avatar">
+                <span id="chat-contact-name" class="chat-contact-name">Nome do Contato</span>
+            </div>
+            <div id="messages-list" class="messages-list">
+                <p class="loading-message">Carregando mensagens...</p>
+                <p id="no-messages-message" class="hidden">Sem mensagens nesta conversa. Envie a primeira!</p>
+                </div>
+            <form id="message-form" class="message-input-area">
+                <input type="text" id="message-input" placeholder="Digite uma mensagem..." required>
+                <button type="submit" class="send-button">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="navbar">
+        <a href="feed.html" class="nav-item"><img src="icons/home.svg" alt="Feed"><span>Feed</span></a>
+        <a href="explore.html" class="nav-item"><img src="icons/search.svg" alt="Explorar"><span>Explorar</span></a>
+        <a href="create-post.html" class="nav-item"><img src="icons/add.svg" alt="Criar"><span>Criar</span></a>
+        <a href="notifications.html" class="nav-item"><img src="icons/bell.svg" alt="Notificações"><span>Notificações</span></a>
+        <a href="my-profile.html" class="nav-item"><img src="icons/user.svg" alt="Perfil"><span>Perfil</span></a>
+    </footer>
+
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/chat.js"></script>
+</body>
+</html>
