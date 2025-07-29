@@ -1,119 +1,45 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar - Zafyre</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Zafyre - Conecte-se e Crie!</title>
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/home.css">   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="login-body">
-    <div class="login-container">
-        <!-- Logo centralizada -->
-        <div class="login-logo-section">
-            <img src="WhatsApp Image 2025-07-04 at 20.21.22.jpeg" alt="Zafyre Logo" class="login-logo">
-            <h1 class="login-brand">ZAFYRE</h1>
-            <p class="login-subtitle">Conecte-se, crie e compartilhe</p>
+<body>
+    <div class="home-container">
+        <div class="home-logo">
+            <img src="assets/logo-zafyre.png" alt="Zafyre Logo">
+            <h1>Zafyre</h1>
+            <p>Conecte-se, Crie, Monetize.</p>
         </div>
 
-        <!-- Formulário de autenticação -->
-        <div class="login-form-container">
-            <div class="login-tabs">
-                <button class="login-tab active" id="loginTabBtn">Entrar</button>
-                <button class="login-tab" id="registerTabBtn">Cadastrar</button>
-            </div>
+        <div class="auth-box">
+            <h2 id="auth-title">Bem-vindo(a) de Volta!</h2>
 
-            <!-- Formulário de Login -->
-            <form id="loginForm" class="login-form active">
-                <div class="form-field">
-                    <i class="fas fa-envelope field-icon"></i>
-                    <input type="email" id="loginEmail" placeholder="Email" required>
-                </div>
-                <div class="form-field">
-                    <i class="fas fa-lock field-icon"></i>
-                    <input type="password" id="loginPassword" placeholder="Senha" required>
-                </div>
-                <button type="submit" class="login-btn primary" id="loginEmailBtn">
-                    <i class="fas fa-sign-in-alt"></i>
-                    Entrar
-                </button>
-                <a href="#" class="forgot-link">Esqueceu sua senha?</a>
-
-                <div class="divider">
-                    <span>ou</span>
-                </div>
-
-                <button type="button" class="login-btn google" id="loginGoogleBtn">
-                    <i class="fab fa-google"></i>
-                    Continuar com Google
-                </button>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Seu e-mail" required autocomplete="email">
+                <input type="password" id="login-password" placeholder="Sua senha" required autocomplete="current-password">
+                <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
 
-            <!-- Formulário de Cadastro -->
-            <form id="registerForm" class="login-form">
-                <div class="form-field">
-                    <i class="fas fa-user field-icon"></i>
-                    <input type="text" id="registerName" placeholder="Nome completo (opcional)">
-                </div>
-                <div class="form-field">
-                    <i class="fas fa-envelope field-icon"></i>
-                    <input type="email" id="registerEmail" placeholder="Email" required>
-                </div>
-                <div class="form-field">
-                    <i class="fas fa-lock field-icon"></i>
-                    <input type="password" id="registerPassword" placeholder="Senha" required>
-                </div>
-                <div class="form-field">
-                    <i class="fas fa-lock field-icon"></i>
-                    <input type="password" id="confirmPassword" placeholder="Confirmar senha" required>
-                </div>
-                
-                <button type="submit" class="login-btn primary" id="registerEmailBtn">
-                    <i class="fas fa-user-plus"></i>
-                    Criar conta
-                </button>
-
-                <p class="terms-notice">
-                    Ao se cadastrar, você concorda com nossos 
-                    <a href="#">Termos de Uso</a> e 
-                    <a href="#">Política de Privacidade</a>
-                </p>
-
-                <div class="divider">
-                    <span>ou</span>
-                </div>
-
-                <button type="button" class="login-btn google" id="registerGoogleBtn">
-                    <i class="fab fa-google"></i>
-                    Cadastrar com Google
-                </button>
+            <p class="or-divider">ou</p>
+            <button id="google-login-btn" class="btn btn-google"><i class="fab fa-google"></i> Entrar com Google</button>
+            <p class="switch-mode">Não tem conta? <a href="#" id="show-register">Criar Conta</a></p>
+            
+            <form id="register-form" style="display: none;">
+                <input type="text" id="register-name" placeholder="Seu nome" required autocomplete="name">
+                <input type="email" id="register-email" placeholder="Seu e-mail" required autocomplete="email">
+                <input type="password" id="register-password" placeholder="Sua senha" required autocomplete="new-password">
+                <select id="register-account-type">
+                    <option value="creator">Criadora</option>
+                    <option value="user">Usuário</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Registrar</button>
             </form>
+            <p class="switch-mode" style="display: none;">Já tem conta? <a href="#" id="show-login">Entrar</a></p>
         </div>
     </div>
 
-    <script>
-        // Troca entre tabs
-        const loginTabBtn = document.getElementById('loginTabBtn');
-        const registerTabBtn = document.getElementById('registerTabBtn');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-
-        loginTabBtn.addEventListener('click', () => {
-            loginTabBtn.classList.add('active');
-            registerTabBtn.classList.remove('active');
-            loginForm.classList.add('active');
-            registerForm.classList.remove('active');
-        });
-
-        registerTabBtn.addEventListener('click', () => {
-            registerTabBtn.classList.add('active');
-            loginTabBtn.classList.remove('active');
-            registerForm.classList.add('active');
-            loginForm.classList.remove('active');
-        });
-    </script>
-    
-    <script type="module" src="js/auth.js"></script>
-</body>
+    <script type="module" src="js/firebase-config.js"></script> <script type="module" src="js/firebase-auth.js"></script>   <script type="module" src="js/home.js"></script>           </body>
 </html>
