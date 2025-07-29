@@ -1,0 +1,262 @@
+/* public/css/style.css */
+
+/* Variáveis de Cores */
+:root {
+    --bg-dark: #121212;
+    --text-light: #E0E0E0;
+    --gold: #DAA520; /* Dourado Principal */
+    --gold-light: #FFD700; /* Dourado Mais Claro */
+    --border-color: #333;
+    --accent-color: #007bff; /* Azul para botões genéricos */
+    --error-color: #dc3545;
+}
+
+/* Base Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex; /* Para o layout principal com sidebar e conteúdo */
+    min-height: 100vh;
+    flex-direction: column; /* Padrão para mobile-first */
+}
+
+/* Header Fixo - Comum a todas as páginas internas */
+.header {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Centraliza o logo por padrão */
+    align-items: center;
+    position: sticky; /* Fixo no topo ao rolar */
+    top: 0;
+    width: 100%;
+    z-index: 50; /* Garante que fique acima de outros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.header .logo img {
+    height: 40px; /* Tamanho do logo no header */
+}
+
+/* Sidebar para Telas Maiores */
+.sidebar {
+    width: 250px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    position: fixed; /* Fixo na tela */
+    height: calc(100% - 60px); /* Altura total menos o header (40px logo + 10px padding top/bottom) */
+    top: 60px; /* Começa abaixo do header */
+    left: 0;
+    overflow-y: auto;
+    z-index: 40; /* Abaixo do header */
+    display: none; /* Escondido por padrão em mobile */
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #333;
+    color: var(--gold-light);
+}
+
+.sidebar nav ul li a i {
+    margin-right: 10px;
+    color: var(--gold); /* Ícones dourados */
+}
+
+/* Main Content Wrapper */
+.main-wrapper {
+    flex-grow: 1;
+    padding-top: 60px; /* Espaço para o header */
+    margin-left: 0; /* Padrão para mobile, ajustado no media query */
+    width: 100%;
+}
+
+/* Botões Genéricos */
+.btn {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+/* Títulos e Separadores */
+h2, h3, h4 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 40px 0;
+}
+
+/* Modal Genérico (Usado para postagens) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    width: 90%; /* Responsive width */
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.close-button {
+    color: var(--text-light);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--gold-light);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.modal-body img,
+.modal-body video { /* Para vídeo no modal */
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.modal-body p {
+    text-align: center;
+    color: var(--text-light);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap; /* Para responsividade dos botões */
+}
+
+.modal-actions span {
+    font-size: 1.1em;
+    color: var(--gold);
+}
+
+
+/* Mobile Navigation (Barra superior para telas pequenas) */
+.mobile-nav {
+    display: flex; /* Visível por padrão em mobile */
+    justify-content: space-around;
+    background-color: #1a1a1a;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 60; /* Acima de tudo */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8em;
+    padding: 5px;
+}
+
+.mobile-nav a i {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: var(--gold);
+}
+
+.mobile-nav a:hover {
+    color: var(--gold-light);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    body {
+        flex-direction: row; /* Para desktop, sidebar e conteúdo lado a lado */
+    }
+
+    .header {
+        justify-content: flex-start; /* Logo à esquerda no desktop */
+        padding-left: calc(250px + 20px); /* Espaço para sidebar */
+    }
+    
+    .sidebar {
+        display: block; /* Mostra o sidebar em desktop */
+    }
+
+    .main-wrapper {
+        margin-left: 250px; /* Espaço para o sidebar */
+        padding-top: 60px; /* Continua dando espaço para o header */
+    }
+
+    .mobile-nav {
+        display: none; /* Esconde a navegação móvel em desktop */
+    }
+}
