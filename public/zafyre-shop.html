@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafyre Shop - Zafyre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar fixa no canto superior esquerdo -->
+    <aside class="main-sidebar">
+        <img src="WhatsApp Image 2025-07-04 at 20.21.22.jpeg" alt="Zafyre Logo" class="sidebar-logo">
+        
+        <nav class="sidebar-nav">
+            <a href="feed.html" class="sidebar-nav-item" id="nav-feed">
+                <img src="icons/home.svg" alt="Feed">
+                <span class="sidebar-tooltip">Feed</span>
+            </a>
+            
+            <a href="my-profile.html" class="sidebar-nav-item" id="nav-profile">
+                <img src="icons/user.svg" alt="Perfil">
+                <span class="sidebar-tooltip">Perfil</span>
+            </a>
+            
+            <a href="chat.html" class="sidebar-nav-item" id="nav-chat">
+                <img src="icons/message-circle.svg" alt="Chat">
+                <span class="sidebar-tooltip">Chat</span>
+            </a>
+            
+            <a href="notifications.html" class="sidebar-nav-item" id="nav-notifications">
+                <img src="icons/bell.svg" alt="Notificações">
+                <span class="sidebar-tooltip">Notificações</span>
+            </a>
+            
+            <a href="zafyre-pay.html" class="sidebar-nav-item" id="nav-pay">
+                <img src="icons/credit-card.svg" alt="Zafyre Pay">
+                <span class="sidebar-tooltip">Zafyre Pay</span>
+            </a>
+            
+            <a href="zafyre-shop.html" class="sidebar-nav-item active" id="nav-shop">
+                <img src="icons/shopping-bag.svg" alt="Zafyre Shop">
+                <span class="sidebar-tooltip">Zafyre Shop</span>
+            </a>
+            
+            <a href="zafyre-creators.html" class="sidebar-nav-item" id="nav-creators">
+                <img src="icons/users.svg" alt="Zafyre Creators">
+                <span class="sidebar-tooltip">Zafyre Creators</span>
+            </a>
+            
+            <a href="subscriptions.html" class="sidebar-nav-item" id="nav-subscriptions">
+                <img src="icons/heart.svg" alt="Assinaturas">
+                <span class="sidebar-tooltip">Assinaturas</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Header centralizado -->
+    <header class="header">
+        <h1>Zafyre Shop</h1>
+    </header>
+
+    <main class="main-content">
+        <!-- Status do usuário -->
+        <section class="user-status-section">
+            <div class="user-status-card">
+                <h3>Seu Status Atual</h3>
+                <div id="current-plan-status">
+                    <span class="status-badge" id="plan-badge">Carregando...</span>
+                    <p id="plan-description">Verificando seu plano atual...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Premium (diferente para homens e mulheres) -->
+        <section class="premium-section">
+            <h2>Plano Premium</h2>
+            <div class="premium-plans" id="premium-plans">
+                <!-- Os planos serão carregados dinamicamente baseado no gênero -->
+            </div>
+        </section>
+
+        <!-- Seção ZafyreCoins (apenas para homens) -->
+        <section class="zafyre-coins-section hidden" id="zafyre-coins-section">
+            <h2>Comprar ZafyreCoins</h2>
+            <p class="coins-description">Use ZafyreCoins para interagir com criadoras, enviar mensagens e muito mais!</p>
+            
+            <div class="coins-packages">
+                <div class="coin-package">
+                    <h4>100 ZafyreCoins</h4>
+                    <div class="price">R$ 4,99</div>
+                    <button class="buy-coins-btn" data-package="100" data-price="4.99">Comprar</button>
+                </div>
+                
+                <div class="coin-package popular">
+                    <div class="popular-badge">Mais Popular</div>
+                    <h4>250 ZafyreCoins</h4>
+                    <div class="price">R$ 9,99</div>
+                    <button class="buy-coins-btn" data-package="250" data-price="9.99">Comprar</button>
+                </div>
+                
+                <div class="coin-package">
+                    <h4>600 ZafyreCoins</h4>
+                    <div class="price">R$ 19,99</div>
+                    <button class="buy-coins-btn" data-package="600" data-price="19.99">Comprar</button>
+                </div>
+                
+                <div class="coin-package">
+                    <h4>1.500 ZafyreCoins</h4>
+                    <div class="price">R$ 39,99</div>
+                    <button class="buy-coins-btn" data-package="1500" data-price="39.99">Comprar</button>
+                </div>
+                
+                <div class="coin-package best-value">
+                    <div class="best-value-badge">Melhor Custo-Benefício</div>
+                    <h4>3.500 ZafyreCoins</h4>
+                    <div class="price">R$ 79,99</div>
+                    <button class="buy-coins-btn" data-package="3500" data-price="79.99">Comprar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Histórico de Compras -->
+        <section class="purchase-history-section">
+            <h2>Histórico de Compras</h2>
+            <div id="purchase-history" class="purchase-history">
+                <p class="loading-message">Carregando histórico...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Navbar inferior para mobile -->
+    <footer class="navbar">
+        <a href="feed.html" class="nav-item"><img src="icons/home.svg" alt="Feed"><span>Feed</span></a>
+        <a href="explore.html" class="nav-item"><img src="icons/search.svg" alt="Explorar"><span>Explorar</span></a>
+        <a href="create-post.html" class="nav-item"><img src="icons/add.svg" alt="Criar"><span>Criar</span></a>
+        <a href="notifications.html" class="nav-item"><img src="icons/bell.svg" alt="Notificações"><span>Notificações</span></a>
+        <a href="my-profile.html" class="nav-item"><img src="icons/user.svg" alt="Perfil"><span>Perfil</span></a>
+    </footer>
+
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/layout-base.js"></script>
+    <script type="module" src="js/zafyre-shop.js"></script>
+</body>
+</html>
