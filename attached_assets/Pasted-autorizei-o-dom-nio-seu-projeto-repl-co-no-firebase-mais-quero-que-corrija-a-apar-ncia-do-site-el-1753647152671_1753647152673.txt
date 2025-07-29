@@ -1,0 +1,138 @@
+autorizei o domínio seu-projeto.repl.co no firebase, mais quero que corrija a aparência do site , ele tem que ser semelhante do facebook por exemplo a parte do feed e perfil, a parte de explorar é na parte superior do feed, onde usuários e criadoras podem pesquisar novos perfis em alta, essa parte criar nova publicação tambem deve conter no feed e no perfil semelhante ao facebook, a parte de cadastro e login esta perfeita, não modifique.. Tela do Feed de Notícias
+Funcionalidade:
+Exibe um feed de posts, priorizando conteúdo de usuários que o usuário logado segue.
+Implementa "scroll infinito" para carregar mais posts à medida que o usuário rola a página.
+Para cada post:Mostra o nome e avatar do autor.
+Exibe a imagem ou vídeo do post (com lazy loading).
+Permite "curtir" e "descurtir" o post, com o ícone de coração mudando de estado e a contagem de likes sendo atualizada em tempo real.
+Permite "comentar" no post, abrindo um modal de comentários.
+Permite "compartilhar" (funcionalidade a ser implementada).
+Exibe a legenda do post e um resumo da contagem de comentários.
+Exibe mensagens de carregamento ou quando não há posts para mostrar.
+Layout:Cabeçalho Global (.main-header): Fixo no topo, com o logo do aplicativo e links de navegação principais (Feed, Perfil, etc.).
+Layout Principal (.container): Divide a tela em duas colunas em desktops:
+Sidebar Esquerda (.sidebar): Fixa, contendo informações do usuário logado (avatar, nome), e um menu de navegação para outras seções do app (Meu Perfil, Chat, Notificações, etc.). Possui rolagem interna se o conteúdo for longo.
+Conteúdo Principal (.main-content): Ocupa o restante da largura, centralizado, onde os posts são exibidos.
+Contêiner de Posts (.posts-container): Limita a largura dos posts para melhor leitura e os centraliza.
+Card de Postagem (.post-card): Cada post é um card individual com:
+Cabeçalho do Post (.post-header): Avatar e nome de usuário do autor (com link para o perfil) e o tempo de publicação.
+Mídia do Post (.post-media): A imagem ou vídeo, ocupando a largura total do card, com cantos arredondados.
+Ações do Post (.post-actions): Botões de ícone (coração para curtir, balão de fala para comentar, ícone de compartilhar). O ícone de curtir muda de SVG vazio para preenchido e de cor (dourado para vermelho) ao ser clicado.
+Contador de Likes (.post-likes): Exibe o número de curtidas.Legenda do Post (.post-caption): Nome de usuário do autor seguido pela legenda.
+Resumo de Comentários (.post-comments-summary): Link para ver todos os comentários.
+Mensagens de Status: loading-message, no-posts-message, loading-more-posts são exibidas/ocultadas conforme o estado do carregamento.
+Responsividade: Em telas menores, a sidebar se torna uma barra superior ou é ocultada, e o conteúdo principal ocupa a largura total.
+Tela do Meu Perfil (my-profile.html)Funcionalidade:
+Exibe o avatar, nome de exibição, biografia e um possível selo "Premium" do usuário logado.
+Mostra estatísticas do perfil: número de posts, seguidores e seguindo.
+Permite editar o perfil através de um modal (alterar nome, biografia, avatar).
+Exibe uma grade de miniaturas dos posts do próprio usuário.
+Ao clicar em uma miniatura de post, pode abrir um modal para ver o post em detalhes (similar ao modal de comentários, mas para o post completo).
+Layout:Cabeçalho Global e Sidebar: Mesmos elementos do feed.html.
+Contêiner do Perfil (.profile-container): Centralizado no main-content.
+Seção de Cabeçalho do Perfil (.profile-header-section): Um card com:
+Avatar Grande (.profile-avatar-large): Avatar do usuário, maior e centralizado.
+Nome de Exibição (.profile-display-name): Nome do usuário.
+Selo Premium (.premium-badge): Opcional, se o usuário for premium.
+Biografia (.profile-bio): Texto descritivo sobre o usuário.
+Botão "Editar Perfil" (.edit-profile-button): Para abrir o modal de edição.
+Estatísticas (.stats): Exibe contadores de posts, seguidores e seguindo.Seção Meus Posts (.my-posts-section): Outro card abaixo do cabeçalho do perfil.
+Título: "Minhas Publicações".
+Grade de Posts (.posts-grid): Layout de grade responsivo para exibir miniaturas dos posts do usuário.
+Miniatura do Post (.post-thumbnail): Cada miniatura é um contêiner 1:1 (quadrado) com a imagem ou vídeo do post, com cantos arredondados e efeito de hover.
+Modal de Edição de Perfil: Um modal genérico (.modal, .modal-content) que se abre para permitir a edição dos campos do perfil e o upload de um novo avatar.
+
+Tela de Perfil de Outro Usuário (user-profile.html)
+Funcionalidade:
+Exibe o avatar, nome de exibição, biografia e estatísticas de outro usuário.
+Botão "Seguir" / "Deixar de Seguir": A principal diferença, permitindo que o usuário logado interaja com o perfil visitado. O estado do botão muda dependendo se o usuário já segue ou não.
+Exibe uma grade de miniaturas dos posts do usuário visitado.
+Ao clicar em uma miniatura de post, pode abrir um modal para ver o post em detalhes.
+Layout:Estrutura Geral: Idêntica à my-profile.html (Cabeçalho Global, Sidebar, profile-container, profile-header-section, my-posts-section, posts-grid, post-thumbnail).
+Diferença Chave: O botão "Editar Perfil" é substituído por um Botão de Seguir/Deixar de Seguir (.follow-button).
+follow-button-follow: Estilo para "Seguir" (ex: dourado, texto escuro).
+follow-button-following: Estilo para "Seguindo" (ex: fundo escuro, texto claro, borda).
+follow-button-following:hover: Pode ter uma cor de destaque (ex: vermelho suave) para indicar a ação de "Deixar de Seguir".
+Tela de Criar Publicação (create-post.html)
+Funcionalidade:
+Permite ao usuário selecionar um arquivo de imagem ou vídeo do seu dispositivo.
+Exibe uma pré-visualização da mídia selecionada.
+Permite que o usuário digite uma legenda para o post.
+Um botão "Publicar" para enviar o post (mídia para Cloudinary, dados para Firestore).
+Exibe mensagens de status (carregando, sucesso, erro).
+Layout:Cabeçalho Específico da Página (.header): Pode ter um botão de "Voltar" e um título central ("Nova Publicação").
+Contêiner do Formulário (.create-post-container): Centralizado no conteúdo principal.
+Formulário de Publicação (.create-post-form): Um card com:
+Área de Upload de Arquivo (.file-upload-area): Uma área tracejada clicável para selecionar arquivos.
+Input de Arquivo (input[type="file"]): Escondido visualmente, mas funcional.
+Label de Upload (.upload-label): Texto e ícone para guiar o usuário.
+Pré-visualização da Mídia (.media-preview): Exibe a imagem ou vídeo selecionado.
+Campo de Legenda (textarea#caption-input): Uma caixa de texto para a legenda do post.
+Botão "Publicar" (button#post-button): Botão principal para enviar o post, que pode ser desabilitado durante o upload.
+Mensagem de Status (.status-message): Para feedback ao usuário.
+Tela de Chat/Mensagens (chat.html)
+Funcionalidade:Exibe uma lista de conversas ativas do usuário.
+Ao clicar em uma conversa na lista, a janela de chat correspondente é aberta.
+Na janela de chat, exibe as mensagens trocadas na conversa, diferenciando mensagens enviadas e recebidas.
+Permite que o usuário digite e envie novas mensagens.
+Em dispositivos móveis, a lista de conversas e a janela de chat alternam a visibilidade para otimizar o espaço.
+Layout:Layout Principal do Chat (.chat-layout): Um contêiner flexível que divide a tela.
+Sidebar de Conversas (.conversations-sidebar):
+Título "Mensagens".
+Lista de itens de conversa (.conversation-item). Cada item mostra:
+Avatar do contato.
+Nome do contato.
+Última mensagem da conversa.
+Hora da última mensagem.
+O item ativo (conversa selecionada) tem um estilo de destaque (fundo dourado, texto preto).
+Janela de Chat (.chat-window):Cabeçalho do Chat (.chat-header):
+Botão de "Voltar" (especialmente em mobile para retornar à lista de conversas).
+Avatar e nome do contato da conversa atual.
+Lista de Mensagens (.messages-list):
+Área rolável que exibe os balões de mensagem.
+Item de Mensagem (.message-item):
+sent: Mensagens enviadas (alinhadas à direita, fundo dourado, texto preto).
+received: Mensagens recebidas (alinhadas à esquerda, fundo escuro, texto claro).
+Cada balão contém o texto da mensagem e um pequeno timestamp.
+Área de Input de Mensagem (.message-input-area):Campo de texto (input[type="text"]) para digitar a mensagem.
+Botão "Enviar" (.send-button).
+Responsividade: Em telas menores, a conversations-sidebar e a chat-window se sobrepõem, com a chat-window deslizando para a frente quando uma conversa é selecionada.
+Tela de Notificações (notifications.html)
+Funcionalidade:
+Exibe uma lista de notificações para o usuário logado (ex: alguém curtiu seu post, alguém comentou, alguém começou a te seguir).
+As notificações podem ser marcadas como lidas/não lidas.
+Exibe mensagens de carregamento ou quando não há notificações.
+Layout:Cabeçalho Global e Sidebar: Mesmos elementos do feed.html.
+Lista de Notificações (.notifications-list): Centralizada no main-content.
+Item de Notificação (.notification-item): Cada notificação é uma linha que contém:
+Avatar do Notificador (.notification-avatar): Avatar do usuário que gerou a notificação.
+Conteúdo da Notificação (.notification-content): Uma frase descrevendo a ação (ex: "Fulano curtiu sua foto", "Ciclano comentou: 'Que legal!'"). O nome do usuário pode ser em negrito e dourado.
+Tempo da Notificação (.notification-time): Há quanto tempo a notificação ocorreu.
+Mensagens de Status: loading-message, no-notifications-message para indicar o estado.
+Tela Explorar (explore.html)
+Funcionalidade:Permite ao usuário descobrir posts populares, em alta, ou de usuários sugeridos.
+Pode incluir uma barra de pesquisa para encontrar posts ou usuários específicos.
+Pode ter categorias ou filtros para refinar a exploração.
+Layout:
+Cabeçalho Global e Sidebar: Mesmos elementos do feed.html.
+Conteúdo Principal (.main-content):
+Pode ter uma barra de pesquisa no topo.
+Apresentaria o conteúdo em um layout de grade (.posts-grid ou similar) com miniaturas de posts (.post-thumbnail) ou cards de perfil de usuários sugeridos.
+A ideia é ser visualmente rica e incentivar a descoberta.
+Mensagens de Status: Para carregamento ou quando não há conteúdo para explorar.
+Tela Zafyre Pay (zafyre-pay.html)
+Funcionalidade:Permite ao usuário realizar pagamentos ou acessar funcionalidades premium (se aplicável).
+Exibe um histórico detalhado das transações do usuário.
+Mostra o status de cada transação (sucesso, pendente, falha).
+Layout:
+Cabeçalho Global e Sidebar: Mesmos elementos do feed.html.
+Seções de Pagamento e Histórico (.payment-section, .transaction-history-section): Cards com fundo escuro e sombra, centralizados no main-content.
+Títulos (h2): Dourados e centralizados.Informações de Pagamento (.payment-info): Texto descritivo sobre o processo de pagamento.
+Botão de Ação (.action-button, .primary-button): Para iniciar um checkout ou processo de pagamento.
+Lista de Transações (.transactions-list):
+Item de Transação (.transaction-item): Cada linha exibe:
+Título da transação.
+Data da transação.
+Valor da transação.
+Status da transação (com cores diferentes para sucesso, pendente, falha).
+Mensagens de Status: no-transactions-message para quando não há históric.
