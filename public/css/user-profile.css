@@ -1,0 +1,204 @@
+/* public/css/user-profile.css */
+
+.profile-header {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--gold);
+    margin-bottom: 15px;
+}
+
+.profile-header h1 {
+    color: var(--gold);
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.profile-header p {
+    color: var(--text-light);
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.profile-stats span {
+    color: var(--text-light);
+    font-size: 1.1em;
+}
+
+.profile-stats strong {
+    color: var(--gold);
+    font-size: 1.3em;
+    display: block; /* Para que o número fique em sua própria linha */
+    margin-bottom: 5px;
+}
+
+#edit-profile-btn {
+    padding: 12px 25px;
+    background-color: #333;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#edit-profile-btn:hover {
+    background-color: #444;
+    border-color: var(--gold);
+}
+
+.profile-content {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    max-width: 800px;
+    margin: 25px auto;
+}
+
+.profile-content h3 {
+    color: var(--gold);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.activity-feed {
+    /* Estilos para o feed de atividades, similar ao feed principal, mas talvez mais compacto */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.no-activity-message {
+    text-align: center;
+    color: #888;
+    padding: 30px;
+    font-style: italic;
+    background-color: #222;
+    border-radius: 8px;
+}
+
+/* Modal de Edição de Perfil (usar estilos de modal de common.css/zafyre-pay.css) */
+/* Replicando partes do modal para garantir consistência */
+.modal-content h3 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.modal-content form .input-group {
+    margin-bottom: 15px;
+}
+
+.modal-content form label {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.modal-content form input[type="text"],
+.modal-content form textarea,
+.modal-content form input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #0d0d0d;
+    color: var(--text-light);
+    font-size: 1em;
+}
+
+.modal-content form input[type="text"]:focus,
+.modal-content form textarea:focus,
+.modal-content form input[type="file"]:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+    outline: none;
+}
+
+.modal-content form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 80px;
+}
+
+.modal-content .file-info {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 5px;
+}
+
+.modal-content form button.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-content form button.btn-primary:hover {
+    background-color: var(--gold-light);
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95em;
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+}
+
+.status-message.success {
+    background-color: #28a745;
+}
+
+.status-message.error {
+    background-color: #dc3545;
+}
+
+@media (max-width: 600px) {
+    .profile-header,
+    .profile-content {
+        padding: 20px;
+        margin: 15px auto;
+    }
+
+    .profile-header h1 {
+        font-size: 1.8em;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
