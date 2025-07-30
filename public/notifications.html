@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zafyre - Notificações</title>
-    <link rel="stylesheet" href="css/style.css">          <link rel="stylesheet" href="css/notifications.css">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">            <link rel="stylesheet" href="css/notifications.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -29,29 +29,42 @@
     </aside>
 
     <main class="main-wrapper content">
-        <h2>Suas Notificações</h2>
-        <p>Esta é a página de notificações. Mantenha-se atualizado sobre o que acontece!</p>
-        <section id="notification-list">
-            </section>
-    </main>
-
-    <div id="post-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <img src="" alt="Postagem" id="modal-media" style="display: block;">
-                <video src="" controls autoplay id="modal-video" style="display: none;"></video>
-                <p id="modal-text"></p>
-                <div class="modal-actions">
-                    <span>❤️ <span id="modal-likes"></span></span>
-                    <span>💬 <span id="modal-comments"></span></span>
-                    <button class="btn btn-buy-ppv" id="modal-buy-ppv-button" style="display: none;"><i class="fas fa-shopping-cart"></i> Comprar Conteúdo</button>
-                    <button class="btn btn-follow-creator" id="modal-follow-button" style="display: none;"><i class="fas fa-user-plus"></i> Seguir</button>
-                    <button class="btn btn-delete-post" id="modal-delete-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Postagem</button>
-                </div>
-            </div>
+        <h2>Notificações</h2>
+        <div class="notifications-container">
+            <ul id="notifications-list">
+                <li class="notification-item unread">
+                    <div class="notification-icon"><i class="fas fa-heart"></i></div>
+                    <div class="notification-content">
+                        <p><strong>Nome de Usuário</strong> curtiu sua postagem! <span class="notification-date">2 min atrás</span></p>
+                        <button class="mark-as-read-btn">Marcar como lida</button>
+                    </div>
+                </li>
+                <li class="notification-item">
+                    <div class="notification-icon"><i class="fas fa-comment"></i></div>
+                    <div class="notification-content">
+                        <p><strong>Nome de Criadora</strong> comentou em sua postagem. <span class="notification-date">1 hora atrás</span></p>
+                        <button class="mark-as-read-btn">Marcar como lida</button>
+                    </div>
+                </li>
+                <li class="notification-item unread">
+                    <div class="notification-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="notification-content">
+                        <p><strong>Parabéns!</strong> Seu conteúdo PPV foi comprado. <span class="notification-date">3 horas atrás</span></p>
+                        <button class="mark-as-read-btn">Marcar como lida</button>
+                    </div>
+                </li>
+                <li class="notification-item">
+                    <div class="notification-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="notification-content">
+                        <p><strong>Novo Seguidor!</strong> <strong>Outro Usuário</strong> começou a te seguir. <span class="notification-date">1 dia atrás</span></p>
+                        <button class="mark-as-read-btn">Marcar como lida</button>
+                    </div>
+                </li>
+                <p class="no-notifications-message" style="display: none;">Nenhuma notificação por enquanto.</p>
+            </ul>
+            <button id="mark-all-read-btn" class="btn btn-secondary">Marcar todas como lidas</button>
         </div>
-    </div>
+    </main>
 
     <nav class="mobile-nav">
         <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
