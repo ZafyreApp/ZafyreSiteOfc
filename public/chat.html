@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zafyre - Chat</title>
-    <link rel="stylesheet" href="css/style.css">     <link rel="stylesheet" href="css/chat.css">      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">        <link rel="stylesheet" href="css/chat.css">         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -29,33 +29,39 @@
     </aside>
 
     <main class="main-wrapper content">
-        <h2>Suas Conversas</h2>
-        <p>Esta é a página de chat. Aqui você pode conversar com criadoras e outros usuários.</p>
-        <section id="chat-list">
-            <h3>Mensagens Recentes</h3>
-            </section>
-        <section id="chat-window" style="display: none;">
-            <h3>Conversa com [Nome do Contato]</h3>
-            </section>
-    </main>
-
-    <div id="post-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <img src="" alt="Postagem" id="modal-media" style="display: block;">
-                <video src="" controls autoplay id="modal-video" style="display: none;"></video>
-                <p id="modal-text"></p>
-                <div class="modal-actions">
-                    <span>❤️ <span id="modal-likes"></span></span>
-                    <span>💬 <span id="modal-comments"></span></span>
-                    <button class="btn btn-buy-ppv" id="modal-buy-ppv-button" style="display: none;"><i class="fas fa-shopping-cart"></i> Comprar Conteúdo</button>
-                    <button class="btn btn-follow-creator" id="modal-follow-button" style="display: none;"><i class="fas fa-user-plus"></i> Seguir</button>
-                    <button class="btn btn-delete-post" id="modal-delete-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Postagem</button>
+        <h2>Chat</h2>
+        <div class="chat-container">
+            <div class="chat-sidebar">
+                <h3>Conversas</h3>
+                <ul id="conversation-list">
+                    <li><a href="#" data-chat-id="user123">
+                        <img src="assets/default-avatar.png" alt="Avatar" class="chat-avatar-small">
+                        <span>Usuário Exemplo 1</span>
+                    </a></li>
+                    <li><a href="#" data-chat-id="user456">
+                        <img src="assets/default-avatar.png" alt="Avatar" class="chat-avatar-small">
+                        <span>Criadora Fictícia</span>
+                    </a></li>
+                    <p class="no-conversations-message" style="display: none;">Nenhuma conversa iniciada.</p>
+                </ul>
+            </div>
+            <div class="chat-main">
+                <div class="chat-header" id="chat-header">
+                    <img src="assets/default-avatar.png" alt="Avatar do Destinatário" class="chat-avatar-medium">
+                    <span id="recipient-name">Selecione uma conversa</span>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <p class="no-messages-message">Comece uma conversa selecionando uma pessoa ou enviando uma mensagem.</p>
+                </div>
+                <div class="chat-input-area">
+                    <textarea id="message-input" placeholder="Digite sua mensagem..."></textarea>
+                    <button id="send-message-btn" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
+                    <input type="file" id="chat-media-input" accept="image/*,video/*" style="display: none;">
+                    <button id="attach-media-btn" class="btn btn-secondary"><i class="fas fa-paperclip"></i></button>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <nav class="mobile-nav">
         <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
