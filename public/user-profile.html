@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafyre - Meu Perfil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user-profile.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logo-zafyre.png" alt="Zafyre Logo">
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="feed.html"><i class="fas fa-home"></i> Feed</a></li>
+                <li><a href="criadora.html" id="profile-link"><i class="fas fa-user"></i> Perfil</a></li>
+                <li><a href="chat.html"><i class="fas fa-envelope"></i> Chat</a></li>
+                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+                <li><a href="zafyre-pay.html"><i class="fas fa-money-bill-wave"></i> Zafyre Pay</a></li>
+                <li><a href="zafyre-shop.html"><i class="fas fa-shopping-bag"></i> Zafyre Shop</a></li>
+                <li><a href="zafyre-creators.html"><i class="fas fa-star"></i> Zafyre Creators</a></li>
+                <li><a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-wrapper content">
+        <div class="profile-header">
+            <img id="user-profile-picture" src="assets/default-avatar.png" alt="Foto de Perfil" class="profile-picture">
+            <h1 id="user-display-name">Nome de Usuário</h1>
+            <p id="user-bio">Bem-vindo(a) ao meu perfil na Zafyre!</p>
+            <div class="profile-stats">
+                <span><strong id="user-followers-count">0</strong> Seguidores</span>
+                <span><strong id="user-following-count">0</strong> Seguindo</span>
+                <span><strong id="user-posts-count">0</strong> Posts Curtidos</span>
+            </div>
+            <button id="edit-profile-btn" class="btn btn-secondary"><i class="fas fa-edit"></i> Editar Perfil</button>
+        </div>
+
+        <section class="profile-content">
+            <h3>Atividade Recente</h3>
+            <div class="activity-feed" id="user-activity-feed">
+                <div class="no-activity-message">Nenhuma atividade recente para mostrar.</div>
+            </div>
+        </section>
+
+        <div id="edit-profile-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Editar Meu Perfil</h3>
+                <form id="edit-profile-form">
+                    <div class="input-group">
+                        <label for="edit-display-name">Nome de Exibição:</label>
+                        <input type="text" id="edit-display-name" required maxlength="50">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-bio">Bio:</label>
+                        <textarea id="edit-bio" rows="4" maxlength="150"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-profile-picture-input">Alterar Foto de Perfil:</label>
+                        <input type="file" id="edit-profile-picture-input" accept="image/*">
+                        <p class="file-info" id="current-profile-pic-name">Nenhuma imagem selecionada.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    <p class="status-message" id="edit-profile-status"></p>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <nav class="mobile-nav">
+        <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
+        <a href="criadora.html" id="profile-link-mobile"><i class="fas fa-user"></i> Perfil</a>
+        <a href="chat.html"><i class="fas fa-envelope"></i> Chat</a>
+        <a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a>
+        <a href="zafyre-pay.html"><i class="fas fa-money-bill-wave"></i> Pay</a>
+        <a href="zafyre-shop.html"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="zafyre-creators.html"><i class="fas fa-star"></i> Creators</a>
+        <a href="#" id="logout-button-mobile"><i class="fas fa-sign-out-alt"></i> Sair</a>
+    </nav>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/firebase-auth.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/user-profile.js"></script> </body>
+</html>
