@@ -29,14 +29,25 @@
     </aside>
 
     <main class="main-wrapper content">
-        <h2>Seu Perfil de Criadora</h2>
-        <p>Esta é a página do perfil da criadora. Você verá suas postagens, estatísticas, etc.</p>
-        <section id="creator-posts">
-            <h3>Minhas Postagens</h3>
-            </section>
-        <section id="creator-analytics">
-            <h3>Estatísticas</h3>
-            </section>
+        <div id="creator-profile-header">
+            <img src="assets/default-avatar.png" alt="Avatar da Criadora" id="creator-avatar" class="profile-avatar">
+            <h2 id="creator-name">Nome da Criadora</h2>
+            <p id="creator-bio">Biografia da criadora aqui...</p>
+            <div class="profile-actions">
+                <button id="follow-button" class="btn btn-primary"><i class="fas fa-user-plus"></i> Seguir</button>
+                <button id="message-button" class="btn btn-secondary"><i class="fas fa-envelope"></i> Mensagem</button>
+                <a href="create-post.html" id="create-post-link" class="btn btn-accent" style="display: none;"><i class="fas fa-plus-circle"></i> Criar Postagem</a>
+            </div>
+            <div class="profile-nav">
+                <button class="profile-nav-btn active" data-filter="all">Todas as Postagens</button>
+                <button class="profile-nav-btn" data-filter="ppv">Conteúdo Premium</button>
+                <button class="profile-nav-btn" data-filter="free">Conteúdo Gratuito</button>
+            </div>
+        </div>
+        
+        <section id="creator-posts" class="feed-posts">
+            <p class="no-posts-message">Carregando postagens da criadora...</p>
+        </section>
     </main>
 
     <div id="post-modal" class="modal">
