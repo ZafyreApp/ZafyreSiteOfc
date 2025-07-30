@@ -1,0 +1,419 @@
+/* public/css/style.css */
+
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-medium: #111111;
+    --bg-light: #1a1a1a;
+    --gold: #FFD700;
+    --gold-light: #FFEA80;
+    --text-light: #f0f0f0;
+    --text-dark: #333333;
+    --border-color: #333;
+    --icon-color: #999;
+    --hover-bg: #222;
+    --primary-btn-bg: var(--gold);
+    --primary-btn-text: var(--bg-dark);
+    --secondary-btn-bg: #333;
+    --secondary-btn-text: var(--text-light);
+    --red-error: #dc3545;
+    --green-success: #28a745;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    display: flex; /* Para flexbox layout com sidebar */
+    min-height: 100vh;
+    overflow-y: scroll; /* Garante que o body possa rolar */
+}
+
+/* Esconde o scrollbar padrão */
+body::-webkit-scrollbar {
+    width: 8px; /* Largura do scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg-dark); /* Cor da trilha */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--border-color); /* Cor do "polegar" */
+    border-radius: 10px; /* Borda arredondada do polegar */
+    border: 2px solid var(--bg-dark); /* Espaçamento ao redor do polegar */
+}
+
+/* Estilo para body quando modal está aberto (para desativar scroll) */
+body.modal-open {
+    overflow: hidden;
+}
+
+
+a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--gold-light);
+}
+
+ul {
+    list-style: none;
+}
+
+input, textarea, button {
+    border: none;
+    outline: none;
+}
+
+/* --- Cabeçalho Fixo --- */
+.header {
+    background-color: var(--bg-medium);
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center; /* Centraliza a logo */
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px; /* Altura fixa do cabeçalho */
+}
+
+.header .logo img {
+    height: 40px; /* Ajuste o tamanho da logo */
+}
+
+/* --- Menu Lateral Fixo (Sidebar) --- */
+.sidebar {
+    width: 200px;
+    background-color: var(--bg-medium);
+    padding-top: 80px; /* Espaço para o cabeçalho fixo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 900;
+}
+
+.sidebar nav ul {
+    padding: 20px 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--text-light);
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar nav ul li a i {
+    margin-right: 15px;
+    font-size: 1.3em;
+    color: var(--icon-color);
+    width: 25px; /* Garante alinhamento dos ícones */
+    text-align: center;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: var(--hover-bg);
+    color: var(--gold);
+}
+
+.sidebar nav ul li a:hover i {
+    color: var(--gold);
+}
+
+/* --- Conteúdo Principal (Ajusta-se à sidebar) --- */
+.main-wrapper {
+    margin-left: 200px; /* Espaço para a sidebar fixa */
+    padding-top: 80px; /* Espaço para o cabeçalho fixo */
+    flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    width: calc(100% - 200px); /* Ajusta a largura */
+}
+
+.content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Botões Gerais --- */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-btn-bg);
+    color: var(--primary-btn-text);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-light);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-btn-bg);
+    color: var(--secondary-btn-text);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+    border-color: var(--gold);
+}
+
+/* --- Formulários e Inputs --- */
+.form-container {
+    background-color: var(--bg-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.form-container h2 {
+    color: var(--gold);
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group input[type="file"],
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus,
+.input-group input[type="text"]:focus,
+.input-group input[type="number"]:focus,
+.input-group input[type="file"]:focus,
+.input-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+}
+
+.checkbox-label {
+    display: inline-flex; /* Para alinhar checkbox e texto */
+    align-items: center;
+    color: var(--text-light);
+    font-size: 0.95em;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--gold); /* Cor do checkbox */
+    cursor: pointer;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 1em;
+    padding: 0;
+    margin-top: 15px;
+    text-decoration: underline;
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95em;
+    padding: 8px;
+    border-radius: 5px;
+    color: white; /* Cor padrão para mensagens */
+}
+
+.status-message.success {
+    background-color: var(--green-success);
+}
+
+.status-message.error {
+    background-color: var(--red-error);
+}
+
+/* --- Modal Base --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+    display: flex; /* Usar flexbox para centralizar */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+.modal-content {
+    background-color: var(--bg-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    transform: translateY(0); /* Garante que está no centro */
+    animation: fadeInModal 0.3s ease-out;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.modal-content h3 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.modal-content .close-button {
+    color: var(--text-light);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-content .close-button:hover,
+.modal-content .close-button:focus {
+    color: var(--red-error);
+}
+
+/* Mobile Navigation Bar */
+.mobile-nav {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-medium);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    padding: 10px 0;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.mobile-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--icon-color);
+    font-size: 0.8em;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav a i {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.mobile-nav a:hover {
+    color: var(--gold);
+}
+
+.mobile-nav.show-mobile-nav {
+    display: flex;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Esconde a sidebar em telas menores */
+    }
+
+    .main-wrapper {
+        margin-left: 0; /* Ocupa toda a largura */
+        width: 100%;
+        padding-bottom: 70px; /* Espaço para a barra de navegação móvel */
+    }
+
+    .mobile-nav {
+        display: flex; /* Mostra a barra de navegação móvel */
+    }
+
+    .header {
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .header .logo {
+        position: absolute; /* Ajusta a logo para ficar centralizada ou à esquerda */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
