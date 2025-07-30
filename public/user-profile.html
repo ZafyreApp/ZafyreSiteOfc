@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafyre - Meu Perfil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logo-zafyre.png" alt="Zafyre Logo">
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="/feed"><i class="fas fa-home"></i> Feed</a></li>
+                <li><a href="#" id="profile-link"><i class="fas fa-user"></i> Perfil</a></li>
+                <li><a href="/chat"><i class="fas fa-envelope"></i> Chat</a></li>
+                <li><a href="/notifications"><i class="fas fa-bell"></i> Notificações</a></li>
+                <li><a href="/zafyre-pay"><i class="fas fa-money-bill-wave"></i> Zafyre Pay</a></li>
+                <li><a href="/zafyre-shop"><i class="fas fa-shopping-bag"></i> Zafyre Shop</a></li>
+                <li><a href="/zafyre-creators"><i class="fas fa-star"></i> Zafyre Creators</a></li>
+                <li id="sidebar-subscription-link"><a href="/subscriptions"><i class="fas fa-bookmark"></i> Minhas Assinaturas</a></li>
+                <li><a href="/settings"><i class="fas fa-cog"></i> Configurações</a></li>
+                <li><a href="/support"><i class="fas fa-question-circle"></i> Suporte</a></li>
+                <li><a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-wrapper content">
+        <div class="profile-header">
+            <img id="user-profile-picture" src="assets/default-avatar.png" alt="Foto de Perfil" class="profile-picture">
+            <h1 id="user-display-name">Nome de Usuário <span id="premium-badge-user" class="premium-badge" style="display: none;">Premium</span></h1>
+            <p id="user-bio">Bem-vindo(a) ao meu perfil na Zafyre!</p>
+            <div class="profile-stats">
+                <span><strong id="user-followers-count">0</strong> Seguindo Criadoras</span>
+                <span><strong id="user-likes-count">0</strong> Curtidas</span>
+            </div>
+            <div class="profile-actions">
+                 <button id="edit-profile-btn-user" class="btn btn-secondary" style="display: none;"><i class="fas fa-edit"></i> Editar Perfil</button>
+            </div>
+        </div>
+
+        <section class="post-creation-section" id="post-creation-section-user" style="display: none;">
+            <h3>Criar Nova Publicação</h3>
+            <form id="create-post-form-user">
+                <textarea id="post-text-user" placeholder="O que você está pensando?" rows="3"></textarea>
+                <input type="file" id="post-media-user" accept="image/*,video/*" multiple>
+                <button type="submit" class="btn btn-primary">Publicar</button>
+                <p id="post-status-message-user" class="status-message"></p>
+            </form>
+        </section>
+
+        <section class="profile-posts-grid">
+            <h3>Minhas Publicações</h3>
+            <div class="posts-grid" id="user-posts-grid">
+                <div class="no-posts-message" style="display: none;">Nenhuma publicação ainda.</div>
+            </div>
+        </section>
+
+        <section class="ranking-section">
+            <h3>Ranking "Galã da Semana"</h3>
+            <div class="ranking-list" id="gala-ranking-list">
+                <p>Sua Posição: <span id="user-gala-rank">--</span></p>
+                <div class="no-ranking-data">Nenhum dado de ranking disponível ainda.</div>
+            </div>
+        </section>
+
+        <div id="edit-profile-modal-user" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Editar Meu Perfil</h3>
+                <form id="edit-profile-form-user">
+                    <div class="input-group">
+                        <label for="edit-display-name-user">Nome de Exibição:</label>
+                        <input type="text" id="edit-display-name-user" required maxlength="50">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-bio-user">Bio:</label>
+                        <textarea id="edit-bio-user" rows="4" maxlength="150"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-profile-picture-input-user">Alterar Foto de Perfil:</label>
+                        <input type="file" id="edit-profile-picture-input-user" accept="image/*">
+                        <p class="file-info" id="current-profile-pic-name-user">Nenhuma imagem selecionada.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    <p class="status-message" id="edit-profile-status-user"></p>
+                </form>
+            </div>
+        </div>
+
+        <div id="post-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="modal-post-content">
+                    </div>
+            </div>
+        </div>
+
+    </main>
+
+    <nav class="mobile-nav">
+        <a href="/feed"><i class="fas fa-home"></i> Feed</a>
+        <a href="#" id="profile-link-mobile"><i class="fas fa-user"></i> Perfil</a>
+        <a href="/chat"><i class="fas fa-envelope"></i> Chat</a>
+        <a href="/notifications"><i class="fas fa-bell"></i> Notificações</a>
+        <a href="/zafyre-pay"><i class="fas fa-money-bill-wave"></i> Pay</a>
+        <a href="/zafyre-shop"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="/zafyre-creators"><i class="fas fa-star"></i> Creators</a>
+        <a href="/subscriptions" id="mobile-subscription-link"><i class="fas fa-bookmark"></i> Assinaturas</a>
+        <a href="/settings"><i class="fas fa-cog"></i> Configs</a>
+        <a href="/support"><i class="fas fa-question-circle"></i> Suporte</a>
+        <a href="#" id="logout-button-mobile"><i class="fas fa-sign-out-alt"></i> Sair</a>
+    </nav>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/firebase-auth.js"></script>
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/user-profile.js"></script>
+    <script type="module" src="js/create-post.js"></script>
+    <script type="module" src="js/post-detail.js"></script>
+</body>
+</html>
