@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zafyre - Pay</title>
-    <link rel="stylesheet" href="css/style.css">        <link rel="stylesheet" href="css/zafyre-pay.css">   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Zafyre - Zafyre Pay</title>
+    <link rel="stylesheet" href="css/style.css">            <link rel="stylesheet" href="css/zafyre-pay.css">       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -30,32 +30,82 @@
 
     <main class="main-wrapper content">
         <h2>Zafyre Pay</h2>
-        <p>Gerencie seus ganhos e suas despesas no Zafyre!</p>
-        <section id="balance-info">
-            <h3>Seu Saldo</h3>
-            </section>
-        <section id="transaction-history">
-            <h3>Histórico de Transações</h3>
-            </section>
-    </main>
+        <div class="pay-container">
+            <div class="balance-card">
+                <h3>Seu Saldo Zafyre Coins</h3>
+                <p class="balance-amount">$ <span id="current-balance">0.00</span></p>
+                <button class="btn btn-primary" id="add-funds-btn"><i class="fas fa-plus-circle"></i> Adicionar Fundos</button>
+                <button class="btn btn-secondary" id="withdraw-funds-btn"><i class="fas fa-wallet"></i> Sacar Fundos</button>
+            </div>
 
-    <div id="post-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <img src="" alt="Postagem" id="modal-media" style="display: block;">
-                <video src="" controls autoplay id="modal-video" style="display: none;"></video>
-                <p id="modal-text"></p>
-                <div class="modal-actions">
-                    <span>❤️ <span id="modal-likes"></span></span>
-                    <span>💬 <span id="modal-comments"></span></span>
-                    <button class="btn btn-buy-ppv" id="modal-buy-ppv-button" style="display: none;"><i class="fas fa-shopping-cart"></i> Comprar Conteúdo</button>
-                    <button class="btn btn-follow-creator" id="modal-follow-button" style="display: none;"><i class="fas fa-user-plus"></i> Seguir</button>
-                    <button class="btn btn-delete-post" id="modal-delete-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Postagem</button>
+            <div class="transaction-history">
+                <h3>Histórico de Transações</h3>
+                <ul id="transactions-list">
+                    <li class="transaction-item incoming">
+                        <span class="transaction-description">Compra de conteúdo - Criadora ABC</span>
+                        <span class="transaction-amount">+ $5.00</span>
+                        <span class="transaction-date">2025-07-29</span>
+                    </li>
+                    <li class="transaction-item outgoing">
+                        <span class="transaction-description">Compra de PPV - Post XYZ</span>
+                        <span class="transaction-amount">- $10.00</span>
+                        <span class="transaction-date">2025-07-28</span>
+                    </li>
+                    <li class="transaction-item incoming">
+                        <span class="transaction-description">Recarga de Zafyre Coins</span>
+                        <span class="transaction-amount">+ $50.00</span>
+                        <span class="transaction-date">2025-07-25</span>
+                    </li>
+                    <p class="no-transactions-message" style="display: none;">Nenhuma transação ainda.</p>
+                </ul>
+            </div>
+
+            <div id="add-funds-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3>Adicionar Fundos</h3>
+                    <form id="add-funds-form">
+                        <div class="input-group">
+                            <label for="add-amount">Valor (Zafyre Coins):</label>
+                            <input type="number" id="add-amount" min="1" step="0.01" required placeholder="Min. $1.00">
+                        </div>
+                        <p class="info-text">Seus Zafyre Coins serão adicionados instantaneamente.</p>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                        <p class="status-message" id="add-funds-status"></p>
+                    </form>
                 </div>
             </div>
+
+            <div id="withdraw-funds-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3>Sacar Fundos</h3>
+                    <form id="withdraw-funds-form">
+                        <div class="input-group">
+                            <label for="withdraw-amount">Valor (Zafyre Coins):</label>
+                            <input type="number" id="withdraw-amount" min="1" step="0.01" required placeholder="Min. $1.00">
+                        </div>
+                        <div class="input-group">
+                            <label for="withdraw-method">Método de Saque:</label>
+                            <select id="withdraw-method" required>
+                                <option value="">Selecione...</option>
+                                <option value="pix">PIX</option>
+                                <option value="bank_transfer">Transferência Bancária</option>
+                            </select>
+                        </div>
+                        <div class="input-group" id="pix-key-group" style="display: none;">
+                            <label for="pix-key">Chave PIX:</label>
+                            <input type="text" id="pix-key" placeholder="Sua chave PIX">
+                        </div>
+                        <p class="info-text">Saques processados em até 24h úteis. Taxa de 5% pode ser aplicada.</p>
+                        <button type="submit" class="btn btn-primary">Sacar</button>
+                        <p class="status-message" id="withdraw-funds-status"></p>
+                    </form>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </main>
 
     <nav class="mobile-nav">
         <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
