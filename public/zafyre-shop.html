@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zafyre - Shop</title>
-    <link rel="stylesheet" href="css/style.css">         <link rel="stylesheet" href="css/zafyre-shop.css">   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Zafyre - Zafyre Shop</title>
+    <link rel="stylesheet" href="css/style.css">            <link rel="stylesheet" href="css/zafyre-shop.css">      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -30,29 +30,35 @@
 
     <main class="main-wrapper content">
         <h2>Zafyre Shop</h2>
-        <p>Compre itens exclusivos e conteúdos especiais!</p>
-        <section id="shop-items">
-            <h3>Itens em Destaque</h3>
-            </section>
-    </main>
-
-    <div id="post-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <img src="" alt="Postagem" id="modal-media" style="display: block;">
-                <video src="" controls autoplay id="modal-video" style="display: none;"></video>
-                <p id="modal-text"></p>
-                <div class="modal-actions">
-                    <span>❤️ <span id="modal-likes"></span></span>
-                    <span>💬 <span id="modal-comments"></span></span>
-                    <button class="btn btn-buy-ppv" id="modal-buy-ppv-button" style="display: none;"><i class="fas fa-shopping-cart"></i> Comprar Conteúdo</button>
-                    <button class="btn btn-follow-creator" id="modal-follow-button" style="display: none;"><i class="fas fa-user-plus"></i> Seguir</button>
-                    <button class="btn btn-delete-post" id="modal-delete-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Postagem</button>
+        <div class="shop-container">
+            <div class="shop-grid" id="shop-items-grid">
+                <div class="shop-item">
+                    <img src="assets/product-placeholder.png" alt="Produto Exemplo" class="item-image">
+                    <h3 class="item-name">Camiseta Zafyre Premium</h3>
+                    <p class="item-description">Camiseta exclusiva com logo Zafyre bordado. Conforto e estilo.</p>
+                    <div class="item-price">$ 45.00</div>
+                    <button class="btn btn-primary buy-item-btn" data-item-id="camiseta-premium">Comprar</button>
                 </div>
+
+                <div class="shop-item">
+                    <img src="assets/product-placeholder.png" alt="Produto Exemplo" class="item-image">
+                    <h3 class="item-name">Caneca Mágica Zafyre</h3>
+                    <p class="item-description">Muda de cor com bebidas quentes. Perfeito para seu café.</p>
+                    <div class="item-price">$ 20.00</div>
+                    <button class="btn btn-primary buy-item-btn" data-item-id="caneca-magica">Comprar</button>
+                </div>
+
+                <p class="no-items-message" style="display: none;">Nenhum item disponível na loja.</p>
+            </div>
+            
+            <div class="my-orders-section" style="margin-top: 40px; display: none;">
+                <h3>Meus Pedidos</h3>
+                <ul id="my-orders-list">
+                    </ul>
+                <p class="no-orders-message" style="display: none;">Nenhum pedido feito ainda.</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <nav class="mobile-nav">
         <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
