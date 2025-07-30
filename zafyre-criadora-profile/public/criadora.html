@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Criadora - Zafyre</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/criadora-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logo-zafyre.png" alt="Zafyre Logo">
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="feed.html"><i class="fas fa-home"></i> Feed</a></li>
+                <li><a href="criadora.html"><i class="fas fa-user"></i> Perfil</a></li>
+                <li><a href="chat.html"><i class="fas fa-envelope"></i> Chat</a></li>
+                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a></li>
+                <li><a href="zafyre-pay.html"><i class="fas fa-money-bill-wave"></i> Zafyre Pay</a></li>
+                <li><a href="zafyre-shop.html"><i class="fas fa-shopping-bag"></i> Zafyre Shop</a></li>
+                <li><a href="zafyre-creators.html"><i class="fas fa-star"></i> Zafyre Creators</a></li>
+                <li><a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-wrapper content">
+        <div class="profile-header">
+            <img src="assets/default-avatar.png" alt="Avatar da Criadora" class="creator-avatar">
+            <h2 class="creator-name">Nome da Criadora</h2>
+            <p class="creator-bio">Uma breve biografia sobre a criadora.</p>
+            <span class="premium-badge">Premium</span>
+            <div class="creator-stats">
+                <span><i class="fas fa-users"></i> 1.2K Seguidores</span>
+                <span><i class="fas fa-heart"></i> 300 Curtidas</span>
+            </div>
+            <div class="profile-buttons">
+                <a href="#" class="btn btn-edit">Editar Perfil</a>
+                <a href="chat.html" class="btn btn-chat">Iniciar Chat</a>
+            </div>
+        </div>
+
+        <div class="post-creation">
+            <h3>Criar Nova Postagem</h3>
+            <textarea placeholder="Escreva algo..."></textarea>
+            <input type="file" accept="image/*">
+            <button class="btn btn-post">Publicar</button>
+        </div>
+
+        <h3>Postagens</h3>
+        <div class="posts-grid" id="posts-grid">
+            <div class="post-card">
+                <img src="assets/default-avatar.png" alt="Postagem" class="post-image">
+                <p class="post-caption">Descrição da postagem.</p>
+            </div>
+            <div class="post-card">
+                <img src="assets/default-avatar.png" alt="Postagem" class="post-image">
+                <p class="post-caption">Descrição da postagem.</p>
+            </div>
+            <p class="no-posts-message" style="display: none;">Nenhuma postagem disponível.</p>
+        </div>
+
+        <div class="monetization-options">
+            <h3>Monetização</h3>
+            <p>Assine para acessar conteúdo exclusivo.</p>
+            <button class="btn btn-subscribe">Assinar Premium</button>
+            <p>Seu saldo: <strong>100 ZafyreCoins</strong></p>
+            <button class="btn btn-withdraw">Sacar</button>
+        </div>
+
+        <div class="weekly-ranking">
+            <h3>Criadoras Estrelas da Semana</h3>
+            <ul>
+                <li>1. Criadora A</li>
+                <li>2. Criadora B</li>
+                <li>3. Criadora C</li>
+                <li>Você está na posição: <strong>4</strong></li>
+            </ul>
+        </div>
+    </main>
+
+    <nav class="mobile-nav">
+        <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
+        <a href="criadora.html"><i class="fas fa-user"></i> Perfil</a>
+        <a href="chat.html"><i class="fas fa-envelope"></i> Chat</a>
+        <a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a>
+        <a href="zafyre-pay.html"><i class="fas fa-money-bill-wave"></i> Pay</a>
+        <a href="zafyre-shop.html"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="zafyre-creators.html"><i class="fas fa-star"></i> Creators</a>
+        <a href="#" id="logout-button-mobile"><i class="fas fa-sign-out-alt"></i> Sair</a>
+    </nav>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/firebase-auth.js"></script>
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="js/criadora-profile.js"></script>
+</body>
+</html>
