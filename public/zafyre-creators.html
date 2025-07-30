@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zafyre - Creators</title>
-    <link rel="stylesheet" href="css/style.css">             <link rel="stylesheet" href="css/zafyre-creators.css">   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Zafyre - Criadoras em Destaque</title>
+    <link rel="stylesheet" href="css/style.css">            <link rel="stylesheet" href="css/zafyre-creators.css">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -29,30 +29,36 @@
     </aside>
 
     <main class="main-wrapper content">
-        <h2>Encontre Criadoras</h2>
-        <p>Explore as criadoras e encontre seus conteúdos favoritos!</p>
-        <section id="creator-directory">
-            <h3>Diretório de Criadoras</h3>
-            </section>
-    </main>
-
-    <div id="post-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <img src="" alt="Postagem" id="modal-media" style="display: block;">
-                <video src="" controls autoplay id="modal-video" style="display: none;"></video>
-                <p id="modal-text"></p>
-                <div class="modal-actions">
-                    <span>❤️ <span id="modal-likes"></span></span>
-                    <span>💬 <span id="modal-comments"></span></span>
-                    <button class="btn btn-buy-ppv" id="modal-buy-ppv-button" style="display: none;"><i class="fas fa-shopping-cart"></i> Comprar Conteúdo</button>
-                    <button class="btn btn-follow-creator" id="modal-follow-button" style="display: none;"><i class="fas fa-user-plus"></i> Seguir</button>
-                    <button class="btn btn-delete-post" id="modal-delete-button" style="display: none;"><i class="fas fa-trash"></i> Excluir Postagem</button>
+        <h2>Criadoras em Destaque</h2>
+        <div class="creators-container">
+            <div class="creators-grid" id="creators-grid">
+                <div class="creator-card">
+                    <img src="assets/default-avatar.png" alt="Avatar da Criadora" class="creator-avatar">
+                    <h3 class="creator-name">Nome da Criadora 1</h3>
+                    <p class="creator-bio-short">Um breve resumo sobre a criadora e seu conteúdo.</p>
+                    <div class="creator-stats">
+                        <span><i class="fas fa-users"></i> 1.2K Seguidores</span>
+                        <span><i class="fas fa-image"></i> 50 Posts</span>
+                    </div>
+                    <a href="criadora.html?id=UID_DA_CRIADORA_1" class="btn btn-primary view-profile-btn">Ver Perfil</a>
                 </div>
+
+                <div class="creator-card">
+                    <img src="assets/default-avatar.png" alt="Avatar da Criadora" class="creator-avatar">
+                    <h3 class="creator-name">Nome da Criadora 2</h3>
+                    <p class="creator-bio-short">Conteúdo exclusivo e interações diretas com os fãs.</p>
+                    <div class="creator-stats">
+                        <span><i class="fas fa-users"></i> 800 Seguidores</span>
+                        <span><i class="fas fa-video"></i> 25 Vídeos</span>
+                    </div>
+                    <a href="criadora.html?id=UID_DA_CRIADORA_2" class="btn btn-primary view-profile-btn">Ver Perfil</a>
+                </div>
+
+                <p class="no-creators-message" style="display: none;">Nenhuma criadora em destaque no momento.</p>
             </div>
-        </div>
-    </div>
+            
+            </div>
+    </main>
 
     <nav class="mobile-nav">
         <a href="feed.html"><i class="fas fa-home"></i> Feed</a>
