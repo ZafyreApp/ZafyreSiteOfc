@@ -1,5 +1,26 @@
 /* public/css/style.css */
 
+/* public/css/style.css */
+:root {
+    --primary-color: #f0f0f0; /* Cor principal do texto */
+    --secondary-color: #b0b0b0; /* Cor secundária do texto */
+    --bg-dark: #0a0a0a; /* Fundo escuro */
+    --bg-medium: #121212; /* Fundo médio */
+    --bg-light: #1a1a1a; /* Fundo claro */
+    --gold: #FFD700; /* Cor dourada principal */
+    --gold-light: #FFEA80; /* Dourado mais claro */
+    --gold-dark: #B8860B; /* Dourado mais escuro */
+    --accent-color: #28a745; /* Cor de destaque (verde) para botões de ação positiva */
+    --danger-color: #dc3545; /* Cor para ações de perigo (vermelho) */
+    --border-color: #333; /* Cor de bordas e divisores */
+    --text-light: #f0f0f0; /* Cor para texto claro */
+    --text-dark: #333; /* Cor para texto escuro (em fundos claros) */
+    --header-height: 70px; /* Altura do cabeçalho */
+    --sidebar-width: 250px; /* Largura da sidebar */
+    --mobile-nav-height: 60px; /* Altura da navegação móvel */
+}
+/* ... restante do seu style.css ... */
+
 /* Variáveis de Cores */
 :root {
     --bg-dark: #121212;
