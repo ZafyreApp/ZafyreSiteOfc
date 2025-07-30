@@ -1,131 +1,102 @@
 // public/js/firebase-auth.js
+import { auth, db } from './firebase-config.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
-import { auth, db } from './firebase-config.js'; // Importa as instâncias de auth e db
-import { 
-    createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, 
-    GoogleAuthProvider, 
-    signInWithPopup 
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-/**
- * Função para registrar um novo usuário com e-mail e senha.
- * @param {string} email - O e-mail do usuário.
- * @param {string} password - A senha do usuário.
- * @param {string} name - O nome do usuário.
- * @param {string} accountType - O tipo de conta ('creator' ou 'user').
- * @returns {Promise<Object>} Um objeto com o usuário ou um erro.
- */
-export async function registerUserWithEmail(email, password, name, accountType) {
+// Função de Registro
+async function registerUser(email, password, userType = 'user') { // Adiciona userType com padrão 'user'
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Salva informações adicionais do usuário no Firestore
+        // Salvar informações adicionais do usuário no Firestore
         await setDoc(doc(db, "users", user.uid), {
-            name: name,
-            email: email,
-            accountType: accountType,
+            email: user.email,
             createdAt: new Date(),
-            // Adicione aqui outros campos iniciais, se precisar (ex: seguidores: 0, curtidas: 0, saldo: 0)
+            userType: userType, // Salva o tipo de usuário
+            // Outros campos iniciais como nome, avatar, bio podem ser adicionados aqui
+            displayName: email.split('@')[0], // Nome de exibição inicial
+            profilePicture: 'assets/default-avatar.png', // Avatar padrão
+            bio: 'Olá! Sou um novo membro da Zafyre.',
             followers: 0,
-            totalLikes: 0,
-            zafyreCoins: 0,
-            isPremium: false,
-            invitationCode: accountType === 'creator' ? generateInvitationCode() : null, // Apenas criadoras
-            profilePicture: 'assets/default-avatar.png' // Avatar padrão
+            following: 0,
+            posts: 0
         });
 
-        console.log("Usuário registrado e dados salvos no Firestore:", user);
-        return { user: user };
+        console.log("Usuário registrado e perfil no Firestore criado:", user.uid);
+        return { success: true, user: user };
     } catch (error) {
-        console.error("Erro no registro:", error.message);
-        throw error; // Propaga o erro para ser tratado pelo chamador
+        console.error("Erro no registro:", error);
+        return { success: false, error: error };
     }
 }
 
-/**
- * Função para fazer login com e-mail e senha.
- * @param {string} email - O e-mail do usuário.
- * @param {string} password - A senha do usuário.
- * @returns {Promise<Object>} Um objeto com o usuário ou um erro.
- */
-export async function loginUserWithEmail(email, password) {
+// Função de Login
+async function loginUser(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log("Usuário logado com e-mail:", user);
-        return { user: user };
+        console.log("Usuário logado:", user.uid);
+        return { success: true, user: user };
     } catch (error) {
-        console.error("Erro no login:", error.message);
-        throw error;
+        console.error("Erro no login:", error);
+        return { success: false, error: error };
     }
 }
 
-/**
- * Função para fazer login com Google.
- * @returns {Promise<Object>} Um objeto com o usuário ou um erro.
- */
-export async function loginUserWithGoogle() {
-    try {
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
+// Função de Logout
+function logoutUser() {
+    signOut(auth).then(() => {
+        console.log("Usuário deslogado.");
+        window.location.href = 'index.html'; // Redireciona para a página de login
+    }).catch((error) => {
+        console.error("Erro ao deslogar:", error);
+    });
+}
 
-        // Verifica se é um novo usuário Google e salva no Firestore
+// Exportar funções para uso em outras partes do seu app
+export { registerUser, loginUser, logoutUser };
+
+// Listener para o estado de autenticação (pode ser usado em common.js ou em páginas específicas)
+auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        // Obter o tipo de usuário do Firestore
         const userDocRef = doc(db, "users", user.uid);
-        const userDoc = await getDoc(userDocRef); // Necessário importar getDoc
+        const userDocSnap = await getDoc(userDocRef);
 
-        if (!userDoc.exists()) {
-            // Se o usuário Google não existe no Firestore, é um novo registro
-            // Aqui você pode redirecionar para uma página onde o usuário escolhe o tipo de conta (criadora/usuário)
-            // Ou definir um tipo padrão, mas o ideal é que ele escolha.
-            // Para simplificar, vamos assumir um tipo padrão ou pedir para ele completar o perfil depois.
-            await setDoc(userDocRef, {
-                name: user.displayName,
-                email: user.email,
-                accountType: 'user', // Pode ser "user" por padrão ou pedir para escolher
-                createdAt: new Date(),
-                followers: 0,
-                totalLikes: 0,
-                zafyreCoins: 0,
-                isPremium: false,
-                profilePicture: user.photoURL || 'assets/default-avatar.png'
-            });
-            console.log("Novo usuário Google registrado e dados salvos no Firestore:", user);
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
+            console.log("Usuário autenticado. Tipo de perfil:", userData.userType);
+            // Armazenar o tipo de usuário em sessionStorage para acesso rápido
+            sessionStorage.setItem('userType', userData.userType);
+            sessionStorage.setItem('userUid', user.uid);
+            sessionStorage.setItem('displayName', userData.displayName || user.email.split('@')[0]);
+            sessionStorage.setItem('profilePicture', userData.profilePicture || 'assets/default-avatar.png');
         } else {
-            console.log("Usuário Google logado:", user);
+            console.warn("Documento do usuário não encontrado no Firestore para", user.uid);
+            // Isso pode acontecer se o usuário foi criado antes da alteração do código
+            // Você pode querer criar o documento aqui com um tipo padrão ou forçar o logout
+            await setDoc(doc(db, "users", user.uid), {
+                email: user.email,
+                createdAt: new Date(),
+                userType: 'user', // Define como padrão 'user'
+                displayName: user.email.split('@')[0],
+                profilePicture: 'assets/default-avatar.png',
+                bio: 'Olá! Sou um novo membro da Zafyre.',
+                followers: 0,
+                following: 0,
+                posts: 0
+            });
+            sessionStorage.setItem('userType', 'user');
+            sessionStorage.setItem('userUid', user.uid);
+            sessionStorage.setItem('displayName', user.email.split('@')[0]);
+            sessionStorage.setItem('profilePicture', 'assets/default-avatar.png');
         }
-
-        return { user: user };
-    } catch (error) {
-        console.error("Erro no login com Google:", error.message);
-        throw error;
+    } else {
+        // Limpa as informações do sessionStorage se não houver usuário logado
+        sessionStorage.removeItem('userType');
+        sessionStorage.removeItem('userUid');
+        sessionStorage.removeItem('displayName');
+        sessionStorage.removeItem('profilePicture');
     }
-}
-
-/**
- * Função para deslogar o usuário.
- */
-export async function logoutUser() {
-    try {
-        await auth.signOut();
-        console.log("Usuário deslogado com sucesso.");
-        // Redirecionar para a página de login
-        window.location.href = 'index.html';
-    } catch (error) {
-        console.error("Erro ao deslogar:", error.message);
-        throw error;
-    }
-}
-
-// Helper para gerar código de indicação (exemplo simples)
-function generateInvitationCode() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = 'ZAFYRE';
-    for (let i = 0; i < 6; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return code;
-}
+});
