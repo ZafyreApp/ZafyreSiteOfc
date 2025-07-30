@@ -1,0 +1,234 @@
+/* public/css/zafyre-pay.css */
+
+.pay-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.balance-card,
+.transaction-history {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.balance-card h3,
+.transaction-history h3 {
+    color: var(--gold);
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.balance-amount {
+    font-size: 3em;
+    color: var(--text-light);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.balance-card .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.balance-card .btn-primary {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+}
+
+.balance-card .btn-primary:hover {
+    background-color: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.balance-card .btn-secondary {
+    background-color: #333;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+
+.balance-card .btn-secondary:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+#transactions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #222;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.transaction-item.incoming {
+    border-left: 4px solid #28a745; /* Verde para entrada */
+}
+
+.transaction-item.outgoing {
+    border-left: 4px solid #dc3545; /* Vermelho para saída */
+}
+
+.transaction-description {
+    color: var(--text-light);
+    font-size: 1em;
+    flex-grow: 1; /* Ocupa espaço disponível */
+}
+
+.transaction-amount {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-left: 15px; /* Espaçamento */
+}
+
+.transaction-item.incoming .transaction-amount {
+    color: #28a745;
+}
+
+.transaction-item.outgoing .transaction-amount {
+    color: #dc3545;
+}
+
+.transaction-date {
+    font-size: 0.85em;
+    color: #888;
+    margin-left: 15px;
+    flex-shrink: 0; /* Não encolhe */
+}
+
+.no-transactions-message {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Modal Styles - Reutilizando e adaptando common.css */
+/* O modal em si (fundo escuro, centra o conteúdo) será de common.css */
+
+.modal-content h3 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.modal-content form .input-group {
+    margin-bottom: 15px;
+}
+
+.modal-content form label {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.modal-content form input[type="number"],
+.modal-content form select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #0d0d0d;
+    color: var(--text-light);
+    font-size: 1em;
+}
+
+.modal-content form input[type="number"]:focus,
+.modal-content form select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+    outline: none;
+}
+
+.modal-content .info-text {
+    color: #888;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: -5px; /* Ajuste para mais perto do input */
+    margin-bottom: 20px;
+}
+
+.modal-content form button.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-content form button.btn-primary:hover {
+    background-color: var(--gold-light);
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95em;
+    padding: 8px;
+    border-radius: 5px;
+    color: white; /* Cor do texto */
+}
+
+.status-message.success {
+    background-color: #28a745;
+}
+
+.status-message.error {
+    background-color: #dc3545;
+}
+
+@media (max-width: 600px) {
+    .balance-amount {
+        font-size: 2.5em;
+    }
+
+    .balance-card .btn {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    .transaction-item {
+        flex-wrap: wrap; /* Permite quebrar linha para mobile */
+        justify-content: flex-start;
+        font-size: 0.9em;
+    }
+
+    .transaction-amount {
+        margin-left: 0;
+        margin-top: 5px;
+        width: 100%;
+        text-align: right;
+    }
+
+    .transaction-date {
+        margin-left: 0;
+        margin-top: 5px;
+        width: 100%;
+        text-align: right;
+    }
+}
