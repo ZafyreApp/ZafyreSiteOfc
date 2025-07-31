@@ -1,0 +1,33 @@
+:root {
+  --cor-fundo: #1b1b1b;
+  --cor-dourado: #FFD700;
+  --cor-texto: #ffffff;
+  --fonte-principal: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-principal);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: var(--cor-dourado);
+}
+
+button {
+  background-color: var(--cor-dourado);
+  color: #1b1b1b;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ffe066;
+}
