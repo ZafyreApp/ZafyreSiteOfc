@@ -1,0 +1,31 @@
+/* src/styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --background-dark: #1a1a1a;
+  --primary-gold: #ffc107; /* Destaques dourados */
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --border-gray: #444444;
+  --button-hover: #e0a800;
+  --error-red: #dc3545;
+  --success-green: #28a745;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
