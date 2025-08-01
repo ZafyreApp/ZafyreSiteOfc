@@ -1,3 +1,4 @@
+<img src="/logo.png" alt="Logo" className="w-10 mb-6" />
 import Link from 'next/link';
 import { useAuth } from '../services/AuthContext';
 import { useState, useEffect } from 'react';
